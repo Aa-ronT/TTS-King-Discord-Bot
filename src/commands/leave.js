@@ -10,8 +10,6 @@ module.exports = {
                 await interaction.reply("This command can only be used in a server.");
                 return;
             }
-
-             // Get the guild ID from the interaction
             const guildId = interaction.guildId;
 
             // Get the voice connection for the guild
@@ -21,10 +19,8 @@ module.exports = {
                 // Disconnect the bot from the voice channel
                 connection.destroy();
 
-                // Send a confirmation message
                 await interaction.reply('The bot has been disconnected from the voice channel.');
             } else {
-                // Send a message if the bot is not connected to a voice channel
                 await interaction.reply('The bot is not connected to any voice channel in this server.');
             }
         }

@@ -1,7 +1,6 @@
 const { StringSelectMenuBuilder, StringSelectMenuOptionBuilder, SlashCommandBuilder, ActionRowBuilder } = require('discord.js');
 
 module.exports = {
-    // Setting up the slash command using SlashCommandBuilder
     data: new SlashCommandBuilder()
         .setName('settings')
         .setDescription('Provides a settings menu for the user.'),
@@ -14,14 +13,13 @@ module.exports = {
 
         // Create a select menu for voice settings
         const select = new StringSelectMenuBuilder()
-            .setCustomId('settings') // Set a custom ID for identifying the select menu interaction
-            .setPlaceholder(`Choose a voice ${interaction.user.username}`) // Set a placeholder text showing the user's name
-            // Adding options to the select menu, each representing a different voice type
+            .setCustomId('settings') 
+            .setPlaceholder(`Choose a voice ${interaction.user.username}`) 
             .addOptions(
                 new StringSelectMenuOptionBuilder()
                     .setLabel('Alloy')
                     .setDescription('The Alloy voice type.')
-                    .setValue('1'), // Setting a value that will be used to identify the selection
+                    .setValue('1'), 
                 new StringSelectMenuOptionBuilder()
                     .setLabel('Echo')
                     .setDescription('The Echo voice type.')

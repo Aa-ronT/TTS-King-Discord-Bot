@@ -20,9 +20,9 @@ let db = new sqlite3.Database(dbPath, (err) => {
             user_id TEXT // ID of the associated user.
         )`, (err) => {
             if (err) {
-                // Handling error if the table creation fails. (Possibly already exists)
+                throw err
             } else {
-                // Code to execute if the table is created for the first time.
+                throw new Error('Db could not create table')
             }
         });
 
@@ -32,9 +32,9 @@ let db = new sqlite3.Database(dbPath, (err) => {
             voice_option INTEGER // Integer representing the user's chosen voice option.
         )`, (err) => {
             if (err) {
-                // Handling error if the table creation fails. (Possibly already exists)
+                throw err
             } else {
-                // Code to execute if the table is created for the first time.
+                throw new Error('Db could not create table')
             }
         });
     }

@@ -13,9 +13,9 @@ const getChannelAssociation = (guildId) => {
     return new Promise((resolve, reject) => {
         db.get('SELECT * FROM channel_association WHERE guild_id = ?', [guildId], (err, row) => {
             if (err) {
-                reject(err); // Reject the promise if there is an error
+                reject(err); 
             } else {
-                resolve(row); // Resolve the promise with the retrieved row
+                resolve(row); 
             }
         });
     });
@@ -27,9 +27,9 @@ const updateVoiceChannelId = (guildId, newVoiceChannelId) => {
         const stmt = db.prepare('UPDATE channel_association SET voice_channel_id = ? WHERE guild_id = ?');
         stmt.run(newVoiceChannelId, guildId, function(err) {
             if (err) {
-                reject(err); // Reject the promise if there is an error
+                reject(err); 
             } else {
-                resolve(this.changes); // Resolve with the number of rows affected
+                resolve(this.changes); 
             }
         });
         stmt.finalize();
@@ -55,14 +55,13 @@ const getUserVoiceOption = (userId) => {
     return new Promise((resolve, reject) => {
         db.get('SELECT voice_option FROM user_voice WHERE user_id = ?', [userId], (err, row) => {
             if (err) {
-                reject(err); // Reject the promise if there is an error
+                reject(err); 
             } else {
-                resolve(row); // Resolve the promise with the retrieved row
+                resolve(row); 
             }
         });
     });
 };
-
 
 module.exports = {
     addChannelAssociation,

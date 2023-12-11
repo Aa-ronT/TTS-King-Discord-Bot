@@ -70,13 +70,12 @@ async function applyConnectionListeners(connection, guildId) {
 
     // Listener for when the connection is ready
     connection.on(VoiceConnectionStatus.Ready, () => {
-        setTimeout(() => {
-            updateVoiceChannelId(guildId, connection.joinConfig.channelId);
-        }, 1000);
+        updateVoiceChannelId(guildId, connection.joinConfig.channelId);
     });
 
     // Listener for when the connection gets disconnected
     connection.on(VoiceConnectionStatus.Disconnected, () => {
+        // Wait 1 second before destroying the connection to confirm no new signaling
         setTimeout(() => {
             if (connection.state.status === VoiceConnectionStatus.Disconnected) {
                 connection.destroy();
